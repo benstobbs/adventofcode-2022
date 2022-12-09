@@ -25,10 +25,10 @@ for cmd in open("07_input.txt").read().split("$"):
         for p in path:
             cwd = cwd.children[p]
         
-        cwd.children = dict([
-            (y, Directory()) if x == "dir" else (y, int(x))
+        cwd.children = {
+            y: Directory() if x == "dir" else int(x)
             for [x, y] in [item.split(" ") for item in cmd.split("\n")[1:] if item != ""]
-        ])
+        }
 
 total = root.size()
 print(sum([size for size in SIZES if size < 100000])) # P1
